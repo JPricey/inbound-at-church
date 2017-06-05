@@ -29,6 +29,6 @@ export function minutesUntil(date, now) {
   if (diffMinutes > 0) {
     return `${diffMinutes} M, ${secondsStr}`
   } else {
-    return diffSeconds;
+    return secondsStr;
   }
 }
