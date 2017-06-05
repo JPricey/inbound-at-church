@@ -18,6 +18,7 @@
     "webpack-dev-server": "^2.4.5"
   },
   "scripts": {
-    "start": "webpack-dev-server --content-base build/"
+    "start": "webpack-dev-server --content-base build/",
+    "pages": "NODE_ENV='production' webpack --optimize-minimize"
   }
 }
