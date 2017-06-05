@@ -18,19 +18,41 @@ function fetchChurchPredictions() {
     return stopArg(route, stop)
   }));
 
-  return fetch(MUNI_ROOT_URL + '?' + args.join('&')).then(response => response.json());
+  return fetch(MUNI_ROOT_URL + '?' + args.join('&'), {
+  }).then((response) => {
+    return response.json();
+  });
+}
+
+function toArray(object) {
+  if (object instanceof Array) {
+    return object;
+  } else {
+    return [object];
+  }
 }
 
 function predictionsToTimings(response) {
   const { predictions } = response;
 
-  return new Map(predictions.map((routePredictions) => {
-    const { routeTag } = routePredictions;
-    const timings = routePredictions.direction.prediction.map((prediction) => {
-      return new Date(Number.parseInt(prediction.epochTime));
+  let routeTimings = [];
+
+  predictions.forEach((routePredictions) => {
+    const { routeTag, direction } = routePredictions;
+
+    const allDirections = toArray(routePredictions.direction);
+    allDirections.forEach((direction) => {
+      const { prediction } = direction;
+
+      const timings = toArray(prediction).map((p) => {
+        return new Date(Number.parseInt(p.epochTime))
+      });
+
+      routeTimings.push([routeTag, timings]);
     });
-    return [routeTag, timings ]
-  }));
+  });
+
+  return new Map(routeTimings);
 }
 
 export function fetchChurchTimings() {
