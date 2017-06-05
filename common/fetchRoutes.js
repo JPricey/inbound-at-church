@@ -59,9 +59,6 @@ export function fetchChurchTimings() {
   return fetchChurchPredictions().then(predictionsToTimings);
 }
 
-function th(){
-}
-
 export function fetchStopTimings() {
   return fetchChurchTimings().then((allTimings) => {
     let stops = new Map([...STOP_NAMES.keys()].map(k => [k, []]));

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { ROUTE_COLOURS } from 'data/muniConstants';
+import { ROUTE_COLOURS } from 'common/muniConstants';
 
 const TOKEN_HEIGHT = 25;
 const TOKEN_HEIGHT_PX = `${TOKEN_HEIGHT}px`;

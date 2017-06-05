@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import RouteToken from './RouteToken';
-import { dateToTime, minutesUntil } from 'data/formatTime';
+import { dateToTime, minutesUntil } from 'common/formatTime';
 
 const STOP_HEADING_HEIGHT_PX = '30px';
 

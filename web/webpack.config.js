@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './web/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, '../web-build'),
     filename: 'bundle.js'
   },
   module: {
@@ -27,8 +27,8 @@ module.exports = {
   },
   resolve: {
     alias: {
-      data: path.resolve(__dirname, 'data'),
-      web: path.resolve(__dirname, 'web'),
+      common: path.resolve(__dirname, '../common'),
+      web: path.resolve(__dirname),
     },
     extensions: [ '.js', '.jsx' ],
   },

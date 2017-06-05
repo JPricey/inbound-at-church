@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { fetchTrimmedStopTimings } from 'data/fetchRoutes'
+import { fetchTrimmedStopTimings } from 'common/fetchRoutes'
 import RouteList from './RouteList'
 
 export default class RouteLoader extends Component {
