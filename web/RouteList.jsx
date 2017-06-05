@@ -79,6 +79,10 @@ export default class RouteList extends Component {
   renderStop(stopData) {
     const { stop, stopName, times } = stopData;
 
+    if (times.length == 0) {
+      return null;
+    }
+
     return (
       <div key={stop}>
         <div style={stopNameCss}>

@@ -27,8 +27,10 @@ function fetchChurchPredictions() {
 function toArray(object) {
   if (object instanceof Array) {
     return object;
-  } else {
+  } else if (!!object) {
     return [object];
+  } else {
+    return [];
   }
 }
 
@@ -111,9 +113,9 @@ export function fetchTrimmedStopTimings() {
       if (a.times.length == 0 && b.times.length == 0) {
         return 0;
       } else if (a.times.length == 0) {
-        return -1;
-      } else if (b.times.length == 0) {
         return 1;
+      } else if (b.times.length == 0) {
+        return -1;
       } else {
         return a.times[0].time - b.times[0].time;
       }

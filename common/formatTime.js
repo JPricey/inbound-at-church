@@ -1,7 +1,23 @@
+function padStart(str) {
+  if (str.length == 1) {
+    return '0' + str;
+  } else {
+    return str
+  }
+}
+
+function modHours(hours) {
+  if (hours % 12 === 0) {
+    return 12;
+  }
+
+  return hours % 12;
+}
+
 export function dateToTime(date) {
-  const hours = date.getHours() % 12;
-  const minutes = date.getMinutes().toString().padStart(2, '0');
-  const seconds = date.getSeconds().toString().padStart(2, '0');
+  const hours = modHours(date.getHours());
+  const minutes = padStart(date.getMinutes().toString());
+  const seconds = padStart(date.getSeconds().toString());
 
   return [hours, minutes, seconds].join(':');
 }
