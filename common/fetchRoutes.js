@@ -43,6 +43,7 @@ function predictionsToTimings(response) {
     const { routeTag, direction } = routePredictions;
 
     const allDirections = toArray(routePredictions.direction);
+    let directionTimings = [];
     allDirections.forEach((direction) => {
       const { prediction } = direction;
 
@@ -50,8 +51,10 @@ function predictionsToTimings(response) {
         return new Date(Number.parseInt(p.epochTime))
       });
 
-      routeTimings.push([routeTag, timings]);
+      directionTimings = directionTimings.concat(timings);
     });
+
+    routeTimings.push([routeTag, directionTimings]);
   });
 
   return new Map(routeTimings);
